@@ -14,9 +14,7 @@ class MyApp extends StatelessWidget {
       create: (context) => RoomsProvider(),
       child: MaterialApp(
         title: 'Rooms App',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: ThemeData(primarySwatch: Colors.blue),
         home: MyHomePage(title: 'Rooms'),
       ),
     );
@@ -36,8 +34,11 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color(0xFF151824),
         appBar: AppBar(
-          title: Text(widget.title),
+          brightness: Brightness.dark,
+          backgroundColor: Color(0xFF151824),
+          title: Center(child: Text(widget.title)),
         ),
         body: RoomsList());
   }
