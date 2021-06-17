@@ -17,6 +17,8 @@ class MyApp extends StatelessWidget {
         title: 'Rooms App',
         theme: ThemeData(
           primaryColor: Color(0xFF151824),
+          bottomAppBarColor: Color(0xFF1C2136),
+          accentColor: Colors.orangeAccent,
           primarySwatch: Colors.blue,
           fontFamily: 'Carmen',
           textTheme: TextTheme(
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
                 fontSize: 30.0,
                 fontWeight: FontWeight.w500,
                 color: Colors.white),
-            headline4: TextStyle(fontSize: 25.0, color: Colors.white),
+            headline4: TextStyle(fontSize: 30.0, color: Colors.white),
             headline5: TextStyle(
                 fontSize: 25.0,
                 fontWeight: FontWeight.w300,

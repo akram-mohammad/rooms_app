@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rooms_app/ui/widgets/status_item.dart';
 
 class StatusList extends StatelessWidget {
@@ -12,15 +13,15 @@ class StatusList extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           children: [
             StatusItem(
-              icon: Icons.home,
+              icon: FontAwesomeIcons.houseUser,
               title: 'Back Home',
             ),
             StatusItem(
-              icon: Icons.home,
+              icon: FontAwesomeIcons.carSide,
               title: 'Home Away',
             ),
             StatusItem(
-              icon: Icons.home,
+              icon: FontAwesomeIcons.peopleCarry,
               title: 'Guest Mode',
             ),
           ],

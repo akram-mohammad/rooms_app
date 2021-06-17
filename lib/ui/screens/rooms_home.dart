@@ -11,10 +11,6 @@ class RoomsHome extends StatefulWidget {
 class _RoomsHomeState extends State<RoomsHome> {
   int _selectedIndex = 0;
 
-  final Shader linearGradient = LinearGradient(
-    colors: <Color>[Color(0xffDA44bb), Color(0xff8921aa)],
-  ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,25 +21,34 @@ class _RoomsHomeState extends State<RoomsHome> {
         title: Center(
             child: Text(
           'Rooms',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22.0),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24.0),
         )),
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: [StatusList(), RoomsList()],
+          children: [
+            StatusList(),
+            SizedBox(
+              height: 2.0,
+            ),
+            RoomsList(),
+          ],
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
         iconList: [
           Icons.home,
-          Icons.card_giftcard,
-          Icons.camera,
-          Icons.pie_chart,
+          Icons.watch_later_outlined,
+          Icons.flash_on_rounded,
+          Icons.menu,
         ],
+        labelList: ['Home', 'Schedule', 'Power', 'More'],
         onChange: (val) {
-          setState(() {
-            _selectedIndex = val;
-          });
+          if (_selectedIndex != val) {
+            setState(() {
+              _selectedIndex = val;
+            });
+          }
         },
         defaultSelectedIndex: 1,
       ),

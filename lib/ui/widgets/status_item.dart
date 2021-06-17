@@ -14,14 +14,27 @@ class StatusItem extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10.0)),
           gradient: LinearGradient(
-            colors: [Colors.red, Colors.orangeAccent],
+            colors: [Color(0xFFD92B56), Color(0xFFF1A71C)],
             begin: Alignment(-1, -1),
             end: Alignment(1, 1),
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [Icon(icon), Text(title)],
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Icon(
+              icon,
+              size: 32.0,
+              color: Colors.white,
+            ),
+            Text(
+              title,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.0),
+            )
+          ],
         ),
       ),
     );

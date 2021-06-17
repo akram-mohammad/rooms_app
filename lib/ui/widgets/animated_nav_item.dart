@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class SizeAnimation extends StatefulWidget {
   final bool selected;
+  final IconData icon;
 
-  SizeAnimation({this.selected});
+  SizeAnimation({this.selected, this.icon});
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -25,7 +26,7 @@ class SizeAnimationState extends State<SizeAnimation>
     _controller = new AnimationController(
         duration: new Duration(milliseconds: 300), vsync: this);
 
-    _widthAnimation = new Tween<double>(begin: 1, end: 1.5).animate(
+    _widthAnimation = new Tween<double>(begin: 1, end: 1.2).animate(
         new CurvedAnimation(curve: Curves.easeInOut, parent: _controller));
 
     _heightAnimation = new Tween<double>(begin: 50.0, end: 250.0).animate(
@@ -44,7 +45,7 @@ class SizeAnimationState extends State<SizeAnimation>
       _controller.reverse();
     }
     return Icon(
-      Icons.home,
+      widget.icon,
       color: Colors.white70,
       size: 25.0 * _widthAnimation.value,
     );

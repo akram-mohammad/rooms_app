@@ -5,9 +5,11 @@ class CustomBottomNavigationBar extends StatefulWidget {
   final int defaultSelectedIndex;
   final Function(int) onChange;
   final List<IconData> iconList;
+  final List<String> labelList;
 
   CustomBottomNavigationBar(
       {this.defaultSelectedIndex = 0,
+      @required this.labelList,
       @required this.iconList,
       @required this.onChange});
 
@@ -34,7 +36,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     List<Widget> _navBarItemList = [];
 
     for (var i = 0; i < _iconList.length; i++) {
-      _navBarItemList.add(buildNavBarItem(_iconList[i], i));
+      _navBarItemList
+          .add(buildNavBarItem(_iconList[i], i, widget.labelList[i]));
     }
 
     return Row(
@@ -42,7 +45,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     );
   }
 
-  Widget buildNavBarItem(IconData icon, int index) {
+  Widget buildNavBarItem(IconData icon, int index, String label) {
     return GestureDetector(
       onTap: () {
         widget.onChange(index);
@@ -51,34 +54,55 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         });
       },
       child: Container(
-        height: 60,
+        color: Theme.of(context).bottomAppBarColor,
+        height: 70,
         width: MediaQuery.of(context).size.width / _iconList.length,
-        child: ShaderMask(
-          shaderCallback: (Rect bounds) {
-            return index == _selectedIndex
-                ? LinearGradient(
-                    colors: [Colors.red, Colors.orangeAccent],
-                    begin: Alignment(-1, -1),
-                    end: Alignment(1, 1),
-                  ).createShader(bounds)
-                : LinearGradient(
-                    colors: [Colors.white70, Colors.white70],
-                    begin: Alignment(-1, -1),
-                    end: Alignment(1, 1),
-                  ).createShader(bounds);
-          },
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizeAnimation(
-                selected: index == _selectedIndex,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ShaderMask(
+              shaderCallback: (Rect bounds) {
+                return index == _selectedIndex
+                    ? LinearGradient(
+                        colors: [Color(0xFFD92B56), Color(0xFFF1A71C)],
+                        begin: Alignment(-1, -1),
+                        end: Alignment(1, 1),
+                      ).createShader(bounds)
+                    : LinearGradient(
+                        colors: [Colors.white70, Colors.white70],
+                        begin: Alignment(-1, -1),
+                        end: Alignment(1, 1),
+                      ).createShader(bounds);
+              },
+              child: Container(
+                height: 30,
+                child: SizeAnimation(
+                  icon: icon,
+                  selected: index == _selectedIndex,
+                ),
               ),
-              Text(
-                'Home',
+            ),
+            SizedBox(
+              height: 3.0,
+            ),
+            ShaderMask(
+              shaderCallback: (Rect bounds) {
+                return index == _selectedIndex
+                    ? LinearGradient(
+                        colors: [Color(0xFFAC286A), Color(0xFFEBAC17)],
+                      ).createShader(bounds)
+                    : LinearGradient(
+                        colors: [Colors.white70, Colors.white70],
+                        begin: Alignment(-1, -1),
+                        end: Alignment(1, 1),
+                      ).createShader(bounds);
+              },
+              child: Text(
+                label,
                 style: TextStyle(fontSize: 14.0, color: Colors.white),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
