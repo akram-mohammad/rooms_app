@@ -11,6 +11,8 @@ class RoomsList extends StatelessWidget {
       builder: (context, roomsProvider, _) {
         return roomsProvider.rooms.isNotEmpty
             ? ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
                 itemCount: roomsProvider.rooms.length,
                 itemBuilder: (ctx, index) {
                   Room room = roomsProvider.rooms[index];

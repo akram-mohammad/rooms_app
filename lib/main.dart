@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rooms_app/core/providers/room_provider.dart';
+import 'package:rooms_app/ui/screens/rooms_home.dart';
 import 'package:rooms_app/ui/screens/rooms_list.dart';
 
 void main() {
@@ -14,7 +15,30 @@ class MyApp extends StatelessWidget {
       create: (context) => RoomsProvider(),
       child: MaterialApp(
         title: 'Rooms App',
-        theme: ThemeData(primarySwatch: Colors.blue),
+        theme: ThemeData(
+          primaryColor: Color(0xFF151824),
+          primarySwatch: Colors.blue,
+          fontFamily: 'Carmen',
+          textTheme: TextTheme(
+            headline1: TextStyle(
+                fontSize: 72.0,
+                fontWeight: FontWeight.w900,
+                color: Colors.white),
+            headline2: TextStyle(
+                fontSize: 32.0,
+                fontWeight: FontWeight.w700,
+                color: Colors.white),
+            headline3: TextStyle(
+                fontSize: 30.0,
+                fontWeight: FontWeight.w500,
+                color: Colors.white),
+            headline4: TextStyle(fontSize: 25.0, color: Colors.white),
+            headline5: TextStyle(
+                fontSize: 25.0,
+                fontWeight: FontWeight.w300,
+                color: Colors.white),
+          ),
+        ),
         home: MyHomePage(title: 'Rooms'),
       ),
     );
@@ -33,13 +57,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Color(0xFF151824),
-        appBar: AppBar(
-          brightness: Brightness.dark,
-          backgroundColor: Color(0xFF151824),
-          title: Center(child: Text(widget.title)),
-        ),
-        body: RoomsList());
+    return RoomsHome();
   }
 }
