@@ -41,8 +41,8 @@ class _CustomSwitchState extends State<CustomSwitch>
     _circleAnimation = AlignmentTween(
             begin: widget.value ? Alignment.centerRight : Alignment.centerLeft,
             end: widget.value ? Alignment.centerLeft : Alignment.centerRight)
-        .animate(CurvedAnimation(
-            parent: _animationController, curve: Curves.easeInOut));
+        .animate(
+            CurvedAnimation(parent: _animationController, curve: Curves.ease));
   }
 
   @override

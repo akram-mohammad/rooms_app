@@ -37,7 +37,7 @@ dependencies:
   path_provider: ^2.0.1
   font_awesome_flutter: 9.1.0
   flutter_xlider: ^3.4.0
-
+  intro_slider: ^2.4.3
 
 dev_dependencies:
   flutter_test:
