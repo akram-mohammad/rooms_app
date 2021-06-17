@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rooms_app/ui/screens/rooms_list.dart';
-import 'package:rooms_app/ui/screens/status_list.dart';
+import 'package:rooms_app/ui/screens/room_list_screen/rooms_list.dart';
+import 'package:rooms_app/ui/screens/room_list_screen/status_list.dart';
+
 import 'package:rooms_app/ui/widgets/custom_navigation_bar.dart';
 
 class RoomsHome extends StatefulWidget {

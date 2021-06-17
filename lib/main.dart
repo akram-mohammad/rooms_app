@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rooms_app/core/providers/room_provider.dart';
-import 'package:rooms_app/ui/screens/rooms_home.dart';
-import 'package:rooms_app/ui/screens/rooms_list.dart';
+import 'package:rooms_app/ui/screens/room_details_screen/room_details_screen.dart';
+import 'package:rooms_app/ui/screens/room_list_screen/rooms_home.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,9 +36,13 @@ class MyApp extends StatelessWidget {
                 color: Colors.white),
             headline4: TextStyle(fontSize: 30.0, color: Colors.white),
             headline5: TextStyle(
-                fontSize: 25.0,
-                fontWeight: FontWeight.w300,
+                fontSize: 13.0,
+                fontWeight: FontWeight.w500,
                 color: Colors.white),
+            headline6: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: 19.0),
           ),
         ),
         home: MyHomePage(title: 'Rooms'),
@@ -59,6 +63,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return RoomsHome();
+    return RoomDetailsScreen();
   }
 }

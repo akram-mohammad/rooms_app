@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rooms_app/ui/widgets/masked_image.dart';
+import 'package:rooms_app/ui/widgets/masked_icon.dart';
 
 class ItemIcon extends StatelessWidget {
   ItemIcon({

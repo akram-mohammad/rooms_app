@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rooms_app/core/models/Room.dart';
 import 'package:rooms_app/ui/widgets/item_icon.dart';
-import 'package:rooms_app/ui/widgets/masked_image.dart';
 
 class RoomItem extends StatelessWidget {
   final Room room;
