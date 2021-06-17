@@ -73,12 +73,9 @@ class RoomDetailImageComp extends StatelessWidget {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4.0),
-                          child: Text(
-                            '23 ',
-                            style: Theme.of(context).textTheme.headline4,
-                          ),
+                        Text(
+                          '23 ',
+                          style: Theme.of(context).textTheme.headline4,
                         ),
                         Text(
                           'kWh',

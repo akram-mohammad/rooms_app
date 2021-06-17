@@ -31,8 +31,6 @@ class ItemIcon extends StatelessWidget {
                     blendMode: BlendMode.srcOut,
                     shaderCallback: (bounds) => LinearGradient(
                           colors: [Color(0xFFDE5252), Color(0xFFEC8E2C)],
-                          begin: Alignment(-1, -1),
-                          end: Alignment(1, 1),
                         ).createShader(bounds),
                     child: child),
                 onPressed: () {},
