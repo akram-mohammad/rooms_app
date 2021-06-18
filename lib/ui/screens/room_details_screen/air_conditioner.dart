@@ -10,8 +10,8 @@ import 'package:rooms_app/ui/widgets/item_icon.dart';
 
 class AirConditionerComp extends StatefulWidget {
   final Size mediaQuery;
-  final Function callback;
-  AirConditionerComp(this.mediaQuery, {this.callback});
+
+  AirConditionerComp(this.mediaQuery);
   @override
   _AirConditionerCompState createState() => _AirConditionerCompState();
 }
@@ -125,7 +125,6 @@ class _AirConditionerCompState extends State<AirConditionerComp> {
                         activeColor: Colors.pinkAccent,
                         value: _currentSwitchValue,
                         onChanged: (value) {
-                          print("VALUE : $value");
                           setState(() {
                             _currentSwitchValue = value;
                           });

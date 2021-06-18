@@ -3,14 +3,14 @@ import 'dart:convert';
 import 'package:rooms_app/core/local_storage/db_helper.dart';
 
 class Room {
-  Room({
-    this.report,
-    this.roomId,
-    this.roomType,
-    this.img,
-    this.name,
-    this.descrip,
-  });
+  Room(
+      {this.report,
+      this.roomId,
+      this.roomType,
+      this.img,
+      this.name,
+      this.descrip,
+      this.switches});
 
   String report;
   int roomId;
@@ -18,6 +18,7 @@ class Room {
   String img;
   String name;
   String descrip;
+  List<bool> switches;
 
   factory Room.fromJson(Map<String, dynamic> json) => Room(
         report: json["report"],

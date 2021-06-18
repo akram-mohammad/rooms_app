@@ -7,8 +7,8 @@ import 'package:rooms_app/ui/widgets/item_icon.dart';
 
 class LightingComp extends StatefulWidget {
   final Size mediaQuery;
-  final Function callback;
-  LightingComp(this.mediaQuery, {this.callback});
+
+  LightingComp(this.mediaQuery);
   @override
   _LightingCompState createState() => _LightingCompState();
 }

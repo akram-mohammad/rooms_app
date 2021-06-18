@@ -17,9 +17,7 @@ class RoomsList extends StatelessWidget {
                 itemCount: roomsProvider.rooms.length,
                 itemBuilder: (ctx, index) {
                   Room room = roomsProvider.rooms[index];
-                  return RoomItem(
-                    room: room,
-                  );
+                  return RoomItem(room: room, index: index);
                 },
               )
             : Container(

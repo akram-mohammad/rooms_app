@@ -6,10 +6,16 @@ import 'package:rooms_app/ui/screens/room_details_screen/room_details_screen.dar
 import 'package:rooms_app/ui/widgets/easy_masked_icon.dart';
 import 'package:rooms_app/ui/widgets/item_icon.dart';
 
-class RoomItem extends StatelessWidget {
+class RoomItem extends StatefulWidget {
   final Room room;
-  RoomItem({this.room});
+  final int index;
+  RoomItem({this.room, this.index});
 
+  @override
+  _RoomItemState createState() => _RoomItemState();
+}
+
+class _RoomItemState extends State<RoomItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,7 +25,7 @@ class RoomItem extends StatelessWidget {
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (ctx) => RoomDetailsScreen(
-                room: room,
+                room: widget.room,
               ),
             ),
           );
@@ -29,7 +35,7 @@ class RoomItem extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
             image: DecorationImage(
-              image: AssetImage("assets/${room.img}"),
+              image: AssetImage("assets/${widget.room.img}"),
               fit: BoxFit.cover,
               colorFilter: new ColorFilter.mode(
                   Colors.white.withOpacity(0.6), BlendMode.dstATop),
@@ -42,7 +48,7 @@ class RoomItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  room.name,
+                  widget.room.name,
                   style: Theme.of(context).textTheme.headline2,
                 ),
                 Row(

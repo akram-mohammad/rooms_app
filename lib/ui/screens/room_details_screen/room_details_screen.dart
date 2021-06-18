@@ -21,7 +21,7 @@ class RoomDetailsScreen extends StatelessWidget {
         shadowColor: Colors.transparent,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.of(context).pop();
           },
           icon: Icon(
             Icons.arrow_back_ios_outlined,
@@ -78,11 +78,15 @@ class RoomDetailsScreen extends StatelessWidget {
                     SizedBox(
                       height: 10.0,
                     ),
-                    LightingComp(mediaQuery),
+                    LightingComp(
+                      mediaQuery,
+                    ),
                     SizedBox(
                       height: 10.0,
                     ),
-                    AirConditionerComp(mediaQuery),
+                    AirConditionerComp(
+                      mediaQuery,
+                    ),
                     SizedBox(
                       height: 10.0,
                     ),
