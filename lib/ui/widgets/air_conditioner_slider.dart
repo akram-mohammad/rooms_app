@@ -33,7 +33,7 @@ class _AirConditionerSliderState extends State<AirConditionerSlider> {
             Expanded(
               child: CarouselSlider.builder(
                 carouselController: _controller,
-                itemCount: 100,
+                itemCount: 150,
                 itemBuilder: (ctx, index, realIdx) {
                   i = index;
                   return AirSliderItem(
@@ -56,9 +56,9 @@ class _AirConditionerSliderState extends State<AirConditionerSlider> {
                       setState(() {
                         realId = i + 1;
                       });
-                    } else if (val.round() == 99.0) {
+                    } else if (val.round() == 149.0) {
                       setState(() {
-                        realId = 99;
+                        realId = 149;
                       });
                     } else if (val.round() == 0.0) {
                       setState(() {

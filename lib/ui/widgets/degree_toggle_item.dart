@@ -15,7 +15,10 @@ class DegreeToggleItem extends StatelessWidget {
       },
       child: Text(
         title,
-        style: TextStyle(color: isToggled ? Color(0xFFEEDF62) : Colors.grey),
+        style: TextStyle(
+          color: isToggled ? Color(0xFFEEDF62) : Colors.grey,
+          fontWeight: FontWeight.w500,
+        ),
       ),
     );
   }
