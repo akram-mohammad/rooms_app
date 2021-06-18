@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_xlider/flutter_xlider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rooms_app/ui/widgets/air_conditioner_slider.dart';
 import 'package:rooms_app/ui/widgets/custom_switch.dart';
+import 'package:rooms_app/ui/widgets/degree_toggle_item.dart';
 import 'package:rooms_app/ui/widgets/easy_masked_icon.dart';
+import 'dart:math' as math;
 
 class AirConditionerComp extends StatefulWidget {
   final Size mediaQuery;
@@ -16,16 +17,18 @@ class AirConditionerComp extends StatefulWidget {
 class _AirConditionerCompState extends State<AirConditionerComp> {
   double _currentSliderValue = 0.0;
   bool _currentSwitchValue = true;
+  bool isToggled = true;
+  int index = 1;
 
-  LinearGradient gradient = LinearGradient(colors: <Color>[
-    Colors.red,
-    Colors.orange,
-    Colors.yellow,
-    Colors.green,
-    Colors.blue,
-    Colors.blue[900],
-    Colors.purple
-  ]);
+  void toggle(int i) {
+    if (index != i) {
+      setState(() {
+        isToggled = !isToggled;
+      });
+    }
+    index = i;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,7 +45,8 @@ class _AirConditionerCompState extends State<AirConditionerComp> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.only(
+            left: 10.0, top: 10.0, bottom: 10.0, right: 15.0),
         child: Column(
           children: [
             Row(
@@ -63,6 +67,43 @@ class _AirConditionerCompState extends State<AirConditionerComp> {
                     Text(
                       'Air Conditioner',
                       style: Theme.of(context).textTheme.headline6,
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Container(
+                      width: 50,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                            width: 1,
+                          ),
+                          Expanded(
+                              child: DegreeToggleItem(
+                            toggle: toggle,
+                            isToggled: isToggled,
+                            title: 'C°',
+                            icon: Icons.wb_sunny,
+                          )),
+                          Transform.rotate(
+                            angle: 90 * math.pi / 180,
+                            child: Icon(FontAwesomeIcons.minus,
+                                size: 10.0,
+                                color: Theme.of(context).primaryColor),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Expanded(
+                              child: DegreeToggleItem(
+                            toggle: toggle,
+                            isToggled: !isToggled,
+                            title: 'F°',
+                            icon: Icons.cloud_sharp,
+                          )),
+                        ],
+                      ),
                     )
                   ],
                 ),
@@ -85,46 +126,18 @@ class _AirConditionerCompState extends State<AirConditionerComp> {
                 ),
               ],
             ),
-
             Row(
               children: [
                 Expanded(
                   child: SizedBox(),
                   flex: 1,
                 ),
-                Icon(
-                  FontAwesomeIcons.minus,
-                  color: Colors.white,
-                  size: 10.0,
-                ),
-                SizedBox(
-                  width: 5.0,
-                ),
                 Expanded(
-                  flex: 4,
+                  flex: 5,
                   child: AirConditionerSlider(),
-                ),
-                SizedBox(
-                  width: 5.0,
-                ),
-                Icon(
-                  FontAwesomeIcons.plus,
-                  color: Colors.white,
-                  size: 12.0,
                 ),
               ],
             )
-            // Slider.adaptive(
-            //   value: _currentSliderValue,
-            //   min: 0,
-            //   max: 100,
-            //   label: _currentSliderValue.round().toString(),
-            //   onChanged: (double value) {
-            //     setState(() {
-            //       _currentSliderValue = value;
-            //     });
-            //   },
-            // )
           ],
         ),
       ),

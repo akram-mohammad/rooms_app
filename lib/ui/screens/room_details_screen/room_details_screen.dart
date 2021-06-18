@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:intro_slider/intro_slider.dart';
 import 'package:rooms_app/ui/screens/room_details_screen/air_conditioner.dart';
 import 'package:rooms_app/ui/screens/room_details_screen/lightings_comp.dart';
 import 'package:rooms_app/ui/widgets/detail_screen_image_comp.dart';
-import 'package:rooms_app/ui/widgets/easy_masked_icon.dart';
 import 'package:rooms_app/ui/widgets/item_icon.dart';
 
 class RoomDetailsScreen extends StatelessWidget {
