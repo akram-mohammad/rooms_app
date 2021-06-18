@@ -39,7 +39,7 @@ class Room {
 
   Map<String, dynamic> toMap() {
     return {
-      DbHelper.COLUMN_ID: roomId,
+      DbHelper.COLUMN_IND: roomId,
       DbHelper.COLUMN_NAME: name,
       DbHelper.COLUMN_IMG: img,
       DbHelper.COLUMN_TYPE: roomType,
@@ -48,7 +48,7 @@ class Room {
   }
 
   factory Room.fromDatabase(Map<String, dynamic> json) => Room(
-      roomId: json[DbHelper.COLUMN_ID],
+      roomId: json[DbHelper.COLUMN_IND],
       name: json[DbHelper.COLUMN_NAME],
       roomType: json[DbHelper.COLUMN_TYPE],
       img: json[DbHelper.COLUMN_IMG],

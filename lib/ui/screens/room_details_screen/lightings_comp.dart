@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rooms_app/ui/widgets/custom_switch.dart';
 import 'package:rooms_app/ui/widgets/easy_masked_icon.dart';
 import 'package:rooms_app/ui/widgets/global_slider.dart';
+import 'package:rooms_app/ui/widgets/item_icon.dart';
 
 class LightingComp extends StatefulWidget {
   final Size mediaQuery;
@@ -17,11 +18,7 @@ class _LightingCompState extends State<LightingComp> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 300),
-      height: _currentSwitchValue
-          ? widget.mediaQuery.height * 0.16
-          : widget.mediaQuery.height * 0.09,
+    return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.0),
         gradient: LinearGradient(
@@ -37,20 +34,27 @@ class _LightingCompState extends State<LightingComp> {
         padding: const EdgeInsets.only(
             left: 10.0, top: 10.0, bottom: 10.0, right: 15.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
-                    EasyMaskedIcon(
-                      child: Icon(
-                        FontAwesomeIcons.solidLightbulb,
-                        size: 25,
-                        color: Color(0xFF2D313D),
-                      ),
-                    ),
+                    _currentSwitchValue
+                        ? EasyMaskedIcon(
+                            child: Icon(
+                              FontAwesomeIcons.solidLightbulb,
+                              size: 25,
+                              color: Color(0xFF2D313D),
+                            ),
+                          )
+                        : ItemIcon(
+                            child: Icon(
+                              FontAwesomeIcons.solidLightbulb,
+                              size: 23,
+                              color: Colors.white,
+                            ),
+                            isMasked: false),
                     SizedBox(
                       width: 20.0,
                     ),
@@ -79,32 +83,42 @@ class _LightingCompState extends State<LightingComp> {
               ],
             ),
             if (_currentSwitchValue)
-              Row(
-                children: [
-                  Expanded(
-                    child: SizedBox(),
-                    flex: 1,
-                  ),
-                  Icon(
-                    Icons.fiber_manual_record,
-                    color: Colors.white,
-                    size: 18.0,
-                  ),
-                  SizedBox(
-                    width: 5.0,
-                  ),
-                  Expanded(
-                    flex: 4,
-                    child: GlobalSlider(),
-                  ),
-                  SizedBox(
-                    width: 5.0,
-                  ),
-                  Icon(
-                    Icons.wb_sunny,
-                    color: Colors.white,
-                  ),
-                ],
+              SizedBox(
+                height: widget.mediaQuery.height * 0.008,
+              ),
+            if (_currentSwitchValue)
+              Padding(
+                padding: (widget.mediaQuery.width <= 370)
+                    ? const EdgeInsets.symmetric(horizontal: 5.0)
+                    : EdgeInsets.zero,
+                child: Row(
+                  children: [
+                    if (widget.mediaQuery.width >= 370)
+                      Expanded(
+                        child: SizedBox(),
+                        flex: 1,
+                      ),
+                    Icon(
+                      Icons.fiber_manual_record,
+                      color: Colors.white,
+                      size: 18.0,
+                    ),
+                    SizedBox(
+                      width: 5.0,
+                    ),
+                    Expanded(
+                      flex: 4,
+                      child: GlobalSlider(),
+                    ),
+                    SizedBox(
+                      width: 5.0,
+                    ),
+                    Icon(
+                      Icons.wb_sunny,
+                      color: Colors.white,
+                    ),
+                  ],
+                ),
               )
           ],
         ),

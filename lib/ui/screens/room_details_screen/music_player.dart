@@ -16,7 +16,6 @@ class _MusicPlayerState extends State<MusicPlayer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.mediaQuery.height * 0.22,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.0),
         gradient: LinearGradient(
@@ -51,45 +50,60 @@ class _MusicPlayerState extends State<MusicPlayer> {
                 ),
               ],
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: SizedBox(),
-                  flex: 1,
-                ),
-                Expanded(
-                  flex: 5,
-                  child: MusicPlayerComp(),
-                ),
-              ],
+            SizedBox(
+              height: 10.0,
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: SizedBox(),
-                  flex: 1,
-                ),
-                Icon(
-                  FontAwesomeIcons.volumeMute,
-                  color: Colors.white,
-                  size: 18.0,
-                ),
-                SizedBox(
-                  width: 5.0,
-                ),
-                Expanded(
-                  flex: 4,
-                  child: GlobalSlider(),
-                ),
-                SizedBox(
-                  width: 5.0,
-                ),
-                Icon(
-                  FontAwesomeIcons.volumeUp,
-                  color: Colors.white,
-                  size: 18.0,
-                ),
-              ],
+            Padding(
+              padding: (widget.mediaQuery.width <= 370)
+                  ? const EdgeInsets.symmetric(horizontal: 5.0)
+                  : EdgeInsets.zero,
+              child: Row(
+                children: [
+                  if (widget.mediaQuery.width >= 370)
+                    Expanded(
+                      child: SizedBox(),
+                      flex: 1,
+                    ),
+                  Expanded(
+                    flex: 5,
+                    child: MusicPlayerComp(),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: (widget.mediaQuery.width <= 370)
+                  ? const EdgeInsets.symmetric(horizontal: 5.0)
+                  : EdgeInsets.zero,
+              child: Row(
+                children: [
+                  if (widget.mediaQuery.width >= 370)
+                    Expanded(
+                      child: SizedBox(),
+                      flex: 1,
+                    ),
+                  Icon(
+                    FontAwesomeIcons.volumeMute,
+                    color: Colors.white,
+                    size: 18.0,
+                  ),
+                  SizedBox(
+                    width: 5.0,
+                  ),
+                  Expanded(
+                    flex: 4,
+                    child: GlobalSlider(),
+                  ),
+                  SizedBox(
+                    width: 5.0,
+                  ),
+                  Icon(
+                    FontAwesomeIcons.volumeUp,
+                    color: Colors.white,
+                    size: 18.0,
+                  ),
+                ],
+              ),
             )
           ],
         ),

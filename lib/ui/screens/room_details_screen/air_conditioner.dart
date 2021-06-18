@@ -6,6 +6,8 @@ import 'package:rooms_app/ui/widgets/degree_toggle_item.dart';
 import 'package:rooms_app/ui/widgets/easy_masked_icon.dart';
 import 'dart:math' as math;
 
+import 'package:rooms_app/ui/widgets/item_icon.dart';
+
 class AirConditionerComp extends StatefulWidget {
   final Size mediaQuery;
   final Function callback;
@@ -31,12 +33,7 @@ class _AirConditionerCompState extends State<AirConditionerComp> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-      height: _currentSwitchValue
-          ? widget.mediaQuery.height * 0.17
-          : widget.mediaQuery.height * 0.09,
+    return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.0),
         gradient: LinearGradient(
@@ -52,20 +49,27 @@ class _AirConditionerCompState extends State<AirConditionerComp> {
         padding: const EdgeInsets.only(
             left: 10.0, top: 10.0, bottom: 10.0, right: 15.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
-                    EasyMaskedIcon(
-                      child: Icon(
-                        FontAwesomeIcons.snowflake,
-                        size: 26,
-                        color: Color(0xFF2D313D),
-                      ),
-                    ),
+                    _currentSwitchValue
+                        ? EasyMaskedIcon(
+                            child: Icon(
+                              FontAwesomeIcons.snowflake,
+                              size: 26,
+                              color: Color(0xFF2D313D),
+                            ),
+                          )
+                        : ItemIcon(
+                            child: Icon(
+                              FontAwesomeIcons.snowflake,
+                              size: 24,
+                              color: Colors.white,
+                            ),
+                            isMasked: false),
                     SizedBox(
                       width: 20.0,
                     ),
@@ -76,40 +80,41 @@ class _AirConditionerCompState extends State<AirConditionerComp> {
                     SizedBox(
                       width: 10.0,
                     ),
-                    Container(
-                      width: 50,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                            width: 1,
-                          ),
-                          Expanded(
-                              child: DegreeToggleItem(
-                            toggle: toggle,
-                            isToggled: isToggled,
-                            title: 'C°',
-                            icon: Icons.wb_sunny,
-                          )),
-                          Transform.rotate(
-                            angle: 90 * math.pi / 180,
-                            child: Icon(FontAwesomeIcons.minus,
-                                size: 10.0,
-                                color: Theme.of(context).primaryColor),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Expanded(
-                              child: DegreeToggleItem(
-                            toggle: toggle,
-                            isToggled: !isToggled,
-                            title: 'F°',
-                            icon: Icons.cloud_sharp,
-                          )),
-                        ],
-                      ),
-                    )
+                    if (_currentSwitchValue && widget.mediaQuery.width >= 370)
+                      Container(
+                        width: 50,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: 1,
+                            ),
+                            Expanded(
+                                child: DegreeToggleItem(
+                              toggle: toggle,
+                              isToggled: isToggled,
+                              title: 'C°',
+                              icon: Icons.wb_sunny,
+                            )),
+                            Transform.rotate(
+                              angle: 90 * math.pi / 180,
+                              child: Icon(FontAwesomeIcons.minus,
+                                  size: 10.0,
+                                  color: Theme.of(context).primaryColor),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Expanded(
+                                child: DegreeToggleItem(
+                              toggle: toggle,
+                              isToggled: !isToggled,
+                              title: 'F°',
+                              icon: Icons.cloud_sharp,
+                            )),
+                          ],
+                        ),
+                      )
                   ],
                 ),
                 Center(
@@ -132,17 +137,23 @@ class _AirConditionerCompState extends State<AirConditionerComp> {
               ],
             ),
             if (_currentSwitchValue)
-              Row(
-                children: [
-                  Expanded(
-                    child: SizedBox(),
-                    flex: 1,
-                  ),
-                  Expanded(
-                    flex: 5,
-                    child: AirConditionerSlider(),
-                  ),
-                ],
+              Padding(
+                padding: (widget.mediaQuery.width <= 370)
+                    ? const EdgeInsets.symmetric(horizontal: 5.0)
+                    : EdgeInsets.zero,
+                child: Row(
+                  children: [
+                    if (widget.mediaQuery.width >= 370)
+                      Expanded(
+                        child: SizedBox(),
+                        flex: 1,
+                      ),
+                    Expanded(
+                      flex: 5,
+                      child: AirConditionerSlider(),
+                    )
+                  ],
+                ),
               )
           ],
         ),

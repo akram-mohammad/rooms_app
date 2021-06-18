@@ -45,7 +45,7 @@ class RoomDetailsScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                      height: mediaQuery.height * 0.1,
+                      height: mediaQuery.height * 0.09,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15.0),
                         gradient: LinearGradient(

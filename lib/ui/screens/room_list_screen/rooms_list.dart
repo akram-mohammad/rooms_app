@@ -7,6 +7,7 @@ import 'package:rooms_app/ui/widgets/room_item.dart';
 class RoomsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Size mediaQuery = MediaQuery.of(context).size;
     return Consumer<RoomsProvider>(
       builder: (context, roomsProvider, _) {
         return roomsProvider.rooms.isNotEmpty
@@ -21,8 +22,11 @@ class RoomsList extends StatelessWidget {
                   );
                 },
               )
-            : Center(
-                child: CircularProgressIndicator(),
+            : Container(
+                height: mediaQuery.height - 240,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
               );
       },
     );

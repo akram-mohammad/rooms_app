@@ -62,7 +62,7 @@ class RoomDetails {
       DbHelper.COLUMN_SWITCH: switchFx,
       DbHelper.COLUMN_NAME: nameRoom,
       DbHelper.COLUMN_IMG: imgRoom,
-      DbHelper.COLUMN_DESCRIP: descripRoom,
+      DbHelper.COLUMN_DESCRIP: descripRoom
     };
   }
 

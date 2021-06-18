@@ -31,7 +31,7 @@ class RoomRepository {
     if (connectivityResult == ConnectivityResult.none) {
       List<Map<String, dynamic>> dbRoomsMap = await dbHelper.queryAllRows();
       final Map<String, dynamic> dbRoomMap = dbRoomsMap.firstWhere((element) {
-        return element[DbHelper.COLUMN_ID] == id;
+        return element[DbHelper.COLUMN_ID] == index;
       });
       print(dbRoomMap);
       RoomDetails dbRoom = RoomDetails.fromDatabase(dbRoomMap);
