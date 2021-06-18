@@ -5,7 +5,6 @@ class GlobalSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterSlider(
-      visibleTouchArea: true,
       touchSize: 5.0,
       values: [40],
       max: 100,

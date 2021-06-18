@@ -1,9 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class RoomDetailImageComp extends StatelessWidget {
   final Size mediaQuery;
+  final String roomImg;
+  final String roomName;
 
-  RoomDetailImageComp(this.mediaQuery);
+  RoomDetailImageComp(this.mediaQuery, {this.roomImg, this.roomName});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,7 +14,7 @@ class RoomDetailImageComp extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage('assets/img/rooms/living.png'),
+          image: AssetImage('assets/$roomImg'),
           colorFilter: ColorFilter.mode(
               Colors.white.withOpacity(0.5), BlendMode.dstATop),
         ),
@@ -22,7 +25,7 @@ class RoomDetailImageComp extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              'Living Room',
+              '$roomName',
               style: Theme.of(context).textTheme.headline2,
             ),
             Row(

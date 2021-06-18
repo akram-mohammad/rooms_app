@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:rooms_app/core/local_storage/db_helper.dart';
+
 class Room {
   Room({
     this.report,
@@ -34,4 +36,21 @@ class Room {
         "name": name,
         "descrip": descrip,
       };
+
+  Map<String, dynamic> toMap() {
+    return {
+      DbHelper.COLUMN_ID: roomId,
+      DbHelper.COLUMN_NAME: name,
+      DbHelper.COLUMN_IMG: img,
+      DbHelper.COLUMN_TYPE: roomType,
+      DbHelper.COLUMN_DESCRIP: descrip,
+    };
+  }
+
+  factory Room.fromDatabase(Map<String, dynamic> json) => Room(
+      roomId: json[DbHelper.COLUMN_ID],
+      name: json[DbHelper.COLUMN_NAME],
+      roomType: json[DbHelper.COLUMN_TYPE],
+      img: json[DbHelper.COLUMN_IMG],
+      descrip: json[DbHelper.COLUMN_DESCRIP]);
 }

@@ -31,8 +31,12 @@ class _AirConditionerCompState extends State<AirConditionerComp> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: widget.mediaQuery.height * 0.17,
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+      height: _currentSwitchValue
+          ? widget.mediaQuery.height * 0.17
+          : widget.mediaQuery.height * 0.09,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.0),
         gradient: LinearGradient(
@@ -48,6 +52,7 @@ class _AirConditionerCompState extends State<AirConditionerComp> {
         padding: const EdgeInsets.only(
             left: 10.0, top: 10.0, bottom: 10.0, right: 15.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -126,18 +131,19 @@ class _AirConditionerCompState extends State<AirConditionerComp> {
                 ),
               ],
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: SizedBox(),
-                  flex: 1,
-                ),
-                Expanded(
-                  flex: 5,
-                  child: AirConditionerSlider(),
-                ),
-              ],
-            )
+            if (_currentSwitchValue)
+              Row(
+                children: [
+                  Expanded(
+                    child: SizedBox(),
+                    flex: 1,
+                  ),
+                  Expanded(
+                    flex: 5,
+                    child: AirConditionerSlider(),
+                  ),
+                ],
+              )
           ],
         ),
       ),

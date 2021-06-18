@@ -21,7 +21,9 @@ class RoomsList extends StatelessWidget {
                   );
                 },
               )
-            : Center(child: CircularProgressIndicator());
+            : Center(
+                child: CircularProgressIndicator(),
+              );
       },
     );
   }

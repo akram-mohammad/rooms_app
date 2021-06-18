@@ -13,13 +13,15 @@ class LightingComp extends StatefulWidget {
 }
 
 class _LightingCompState extends State<LightingComp> {
-  double _currentSliderValue = 0.0;
   bool _currentSwitchValue = true;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: widget.mediaQuery.height * 0.17,
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 300),
+      height: _currentSwitchValue
+          ? widget.mediaQuery.height * 0.16
+          : widget.mediaQuery.height * 0.09,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15.0),
         gradient: LinearGradient(
@@ -66,7 +68,6 @@ class _LightingCompState extends State<LightingComp> {
                         activeColor: Colors.pinkAccent,
                         value: _currentSwitchValue,
                         onChanged: (value) {
-                          print("VALUE : $value");
                           setState(() {
                             _currentSwitchValue = value;
                           });
@@ -77,33 +78,34 @@ class _LightingCompState extends State<LightingComp> {
                 ),
               ],
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: SizedBox(),
-                  flex: 1,
-                ),
-                Icon(
-                  Icons.fiber_manual_record,
-                  color: Colors.white,
-                  size: 18.0,
-                ),
-                SizedBox(
-                  width: 5.0,
-                ),
-                Expanded(
-                  flex: 4,
-                  child: GlobalSlider(),
-                ),
-                SizedBox(
-                  width: 5.0,
-                ),
-                Icon(
-                  Icons.wb_sunny,
-                  color: Colors.white,
-                ),
-              ],
-            )
+            if (_currentSwitchValue)
+              Row(
+                children: [
+                  Expanded(
+                    child: SizedBox(),
+                    flex: 1,
+                  ),
+                  Icon(
+                    Icons.fiber_manual_record,
+                    color: Colors.white,
+                    size: 18.0,
+                  ),
+                  SizedBox(
+                    width: 5.0,
+                  ),
+                  Expanded(
+                    flex: 4,
+                    child: GlobalSlider(),
+                  ),
+                  SizedBox(
+                    width: 5.0,
+                  ),
+                  Icon(
+                    Icons.wb_sunny,
+                    color: Colors.white,
+                  ),
+                ],
+              )
           ],
         ),
       ),

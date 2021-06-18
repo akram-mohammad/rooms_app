@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:rooms_app/core/models/Room.dart';
 import 'package:rooms_app/ui/screens/room_details_screen/air_conditioner.dart';
 import 'package:rooms_app/ui/screens/room_details_screen/lightings_comp.dart';
 import 'package:rooms_app/ui/screens/room_details_screen/music_player.dart';
@@ -7,6 +8,8 @@ import 'package:rooms_app/ui/widgets/detail_screen_image_comp.dart';
 import 'package:rooms_app/ui/widgets/item_icon.dart';
 
 class RoomDetailsScreen extends StatelessWidget {
+  final Room room;
+  RoomDetailsScreen({this.room});
   @override
   Widget build(BuildContext context) {
     Size mediaQuery = MediaQuery.of(context).size;
@@ -16,16 +19,25 @@ class RoomDetailsScreen extends StatelessWidget {
         brightness: Brightness.dark,
         backgroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
-        leading: Icon(
-          Icons.arrow_back_ios_outlined,
-          color: Colors.white,
-          size: 20.0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios_outlined,
+            color: Colors.white,
+            size: 20.0,
+          ),
         ),
       ),
       extendBodyBehindAppBar: true,
       body: Column(
         children: [
-          RoomDetailImageComp(mediaQuery),
+          RoomDetailImageComp(
+            mediaQuery,
+            roomImg: room.img,
+            roomName: room.name,
+          ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(10.0),

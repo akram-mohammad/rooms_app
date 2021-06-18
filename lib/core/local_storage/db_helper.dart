@@ -10,6 +10,12 @@ class DbHelper {
   static const _DATA_BASE_VERSION = 1;
   static const _TABLE = 'rooms';
   static const COLUMN_ID = 'id';
+  static const COLUMN_INDEX = 'index';
+  static const COLUMN_TYPE = 'type';
+  static const COLUMN_NAME = 'name';
+  static const COLUMN_IMG = 'img';
+  static const COLUMN_DESCRIP = 'descrip';
+  static const COLUMN_SWITCH = 'switch';
 
   DbHelper._();
 
@@ -34,7 +40,12 @@ class DbHelper {
   Future _onCreate(Database db, int version) async {
     await db.execute('''
           CREATE TABLE $_TABLE (
-            $COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+            $COLUMN_ID INTEGER PRIMARY KEY,
+            $COLUMN_TYPE INTEGER,
+            $COLUMN_IMG TEXT,
+            $COLUMN_NAME TEXT,
+            $COLUMN_DESCRIP TEXT,
+            $COLUMN_SWITCH TEXT
           )
           ''');
   }
@@ -42,6 +53,14 @@ class DbHelper {
   Future<int> insert(Map<String, dynamic> row) async {
     Database db = await instance.database;
     return await db.insert(_TABLE, row,
+        conflictAlgorithm: ConflictAlgorithm.replace);
+  }
+
+  Future<int> update(Map<String, dynamic> row, int ind) async {
+    Database db = await instance.database;
+    return await db.update(_TABLE, row,
+        where: 'index = ?',
+        whereArgs: [ind],
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
