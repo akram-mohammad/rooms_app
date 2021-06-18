@@ -13,16 +13,16 @@ class Room {
   });
 
   String report;
-  String roomId;
-  String roomType;
+  int roomId;
+  int roomType;
   String img;
   String name;
   String descrip;
 
   factory Room.fromJson(Map<String, dynamic> json) => Room(
         report: json["report"],
-        roomId: json["room_id"],
-        roomType: json["room_type"],
+        roomId: int.parse(json["room_id"]),
+        roomType: int.parse(json["room_type"]),
         img: json["img"],
         name: json["name"],
         descrip: json["descrip"],

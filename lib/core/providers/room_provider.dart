@@ -10,19 +10,19 @@ class RoomsProvider extends ChangeNotifier {
 
   RoomsProvider({id, type, index}) {
     if (id != null) {
-      getActor(id, type, index);
+      getRoom(id, type, index);
     }
-    getActors();
+    getRooms();
   }
 
-  void getActors() {
+  void getRooms() {
     _roomRepository.fetchRooms().then((newRooms) {
       rooms.addAll(newRooms);
       notifyListeners();
     });
   }
 
-  void getActor(id, type, index) {
+  void getRoom(id, type, index) {
     _roomRepository.fetchRoom(id, type, index).then((newRoom) {
       room = newRoom;
       notifyListeners();

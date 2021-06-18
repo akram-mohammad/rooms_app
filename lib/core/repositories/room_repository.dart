@@ -14,11 +14,12 @@ class RoomRepository {
     if (connectivityResult == ConnectivityResult.none) {
       List<Map<String, dynamic>> dbRoomsMap = await dbHelper.queryAllRows();
       List<Room> dbRooms = dbRoomsMap.map((e) => Room.fromDatabase(e)).toList();
+      print(dbRooms);
       return dbRooms;
     } else {
       final networkRooms = await _roomService.fetchRooms();
-      for (final actor in networkRooms) {
-        dbHelper.insert(actor.toMap());
+      for (final room in networkRooms) {
+        dbHelper.insert(room.toMap());
       }
       return networkRooms;
     }
@@ -40,7 +41,7 @@ class RoomRepository {
       return dbRoom;
     } else {
       final RoomDetails netRoom = await _roomService.fetchRoom(id, type);
-      dbHelper.update(netRoom.toMap(), index);
+      // dbHelper.update(netRoom.toMap(), index);
       return netRoom;
     }
   }

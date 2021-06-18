@@ -22,7 +22,7 @@ class RoomDetails {
   String descripRoom;
   String report;
   String switchFx;
-  String controlId;
+  int controlId;
   String icon;
   String name;
   String urlLive;

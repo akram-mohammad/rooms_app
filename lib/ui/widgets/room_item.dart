@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rooms_app/core/models/Room.dart';
 import 'package:rooms_app/ui/screens/room_details_screen/room_details_screen.dart';
+import 'package:rooms_app/ui/widgets/easy_masked_icon.dart';
 import 'package:rooms_app/ui/widgets/item_icon.dart';
 
 class RoomItem extends StatelessWidget {
@@ -70,19 +71,18 @@ class RoomItem extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
-                        ItemIcon(
-                          isMasked: true,
+                        EasyMaskedIcon(
                           child: Icon(
                             FontAwesomeIcons.music,
                             size: 21.0,
-                            color: Colors.black,
+                            color: Color(0xFF2D313D),
                           ),
                         ),
-                        ItemIcon(
-                          isMasked: true,
+                        EasyMaskedIcon(
                           child: Icon(
                             FontAwesomeIcons.solidLightbulb,
                             size: 25,
+                            color: Color(0xFF2D313D),
                           ),
                         )
                       ],
